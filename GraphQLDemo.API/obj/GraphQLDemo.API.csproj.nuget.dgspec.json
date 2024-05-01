@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj": {}
+    "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj": {
+    "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
+        "projectUniqueName": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
         "projectName": "GraphQLDemo.API",
-        "projectPath": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
+        "projectPath": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
         "packagesPath": "C:\\Users\\luqma\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\obj\\",
+        "outputPath": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\luqma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -47,6 +47,20 @@
             "HotChocolate.AspNetCore": {
               "target": "Package",
               "version": "[14.0.0-p.93, )"
+            },
+            "HotChocolate.Data.EntityFramework": {
+              "target": "Package",
+              "version": "[14.0.0-p.93, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.29, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[6.0.28, )"
             }
           },
           "imports": [
@@ -68,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.421\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.421\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,3 +1,6 @@
+using GraphQLDemo.API.Schema.Subscriptions;
+using HotChocolate.Subscriptions;
+
 namespace GraphQLDemo.API.Schema;
 
 public class Mutation {
@@ -9,7 +12,9 @@ public class Mutation {
     }
 
     // Creating a Course
-    public CourseResponse CreateCourse(CourseInputType input) {
+    // When a course is created, we want to emit an event using a Subscription
+    // The ITopicEventSender Interface is used to publish and trigger subscriptions
+    public async Task<CourseResponse> CreateCourse(CourseInputType input, [Service] ITopicEventSender sender) {
         
         CourseResponse course = new CourseResponse() {
             Id = Guid.NewGuid(),
@@ -20,12 +25,15 @@ public class Mutation {
         
         _courses.Add(course);
 
+        // Type Safety for topic names
+        // "CourseCreated" is out topic and the CourseResponse is our payload
+        await sender.SendAsync(nameof(Subscription.CourseCreated), course);
         return course;
     }
     
     
     // Updating a Course
-    public CourseResponse UpdateCourse(Guid id, CourseInputType input) {
+    public async Task<CourseResponse> UpdateCourse(Guid id, CourseInputType input, [Service] ITopicEventSender sender) {
         CourseResponse course = _courses.FirstOrDefault(c => c.Id == id);
 
         // Throwing a GraphQLException exception with message and a code to handle on the client side
@@ -36,6 +44,11 @@ public class Mutation {
         course.Name = input.Name;
         course.Subject = input.Subject;
         course.InstructorId = input.InstructorId;
+
+        // Send an event when a course is updated
+        // We use a custom event name that is UNIQUE to publish to the topic.
+        string updateCourseTopic = $"{course.Id}_{nameof(Subscription.CourseUpdated)}";
+        await sender.SendAsync(updateCourseTopic, course);
 
         return course;
     }

@@ -1,3 +1,5 @@
+using GraphQLDemo.API.Models;
+
 namespace GraphQLDemo.API.Schema;
 
 public class CourseResponse {
