@@ -8,8 +8,8 @@
 
     <ItemGroup>
       <PackageReference Include="Bogus" Version="35.5.1" />
-      <PackageReference Include="HotChocolate.AspNetCore" Version="14.0.0-p.93" />
-      <PackageReference Include="HotChocolate.Data.EntityFramework" Version="14.0.0-p.93" />
+      <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.0" />
+      <PackageReference Include="HotChocolate.Data.EntityFramework" Version="13.9.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.29">
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

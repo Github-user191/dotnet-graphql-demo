@@ -1,16 +1,10 @@
 using GraphQLDemo.API.Data;
+using GraphQLDemo.API.Repository;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Subscriptions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-builder.Services.AddGraphQLServer()
-    .AddMutationType<Mutation>()
-    .AddSubscriptionType<Subscription>()
-    .AddInMemorySubscriptions()
-    .AddQueryType<Query>();
-
 
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 // Ensures we have a "pool" of DbContexts ready.
@@ -19,6 +13,17 @@ builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(opts => {
     opts.UseSqlite(connectionString);
 });
 
+
+builder.Services.AddGraphQLServer()
+    .AddMutationType<Mutation>()
+    .AddSubscriptionType<Subscription>()
+    .AddInMemorySubscriptions()
+    .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
+    .AddQueryType<Query>();
+
+
+// Scoped service gives us a new instance for each request to the server
+builder.Services.AddScoped<CourseRepository>();
 
 var app = builder.Build();
 

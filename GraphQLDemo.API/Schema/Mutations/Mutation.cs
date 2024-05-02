@@ -1,3 +1,5 @@
+using GraphQLDemo.API.Dtos;
+using GraphQLDemo.API.Repository;
 using GraphQLDemo.API.Schema.Subscriptions;
 using HotChocolate.Subscriptions;
 
@@ -5,25 +7,32 @@ namespace GraphQLDemo.API.Schema;
 
 public class Mutation {
 
-    private readonly List<CourseResponse> _courses;
+    //private readonly List<CourseResponse> _courses;
+    private readonly CourseRepository _repository;
 
-    public Mutation() {
-        _courses = new List<CourseResponse>();
+    public Mutation(CourseRepository repository) {
+        _repository = repository;
     }
 
     // Creating a Course
     // When a course is created, we want to emit an event using a Subscription
     // The ITopicEventSender Interface is used to publish and trigger subscriptions
     public async Task<CourseResponse> CreateCourse(CourseInputType input, [Service] ITopicEventSender sender) {
-        
-        CourseResponse course = new CourseResponse() {
-            Id = Guid.NewGuid(),
+
+        CourseDto courseDto = new CourseDto() {
             Name = input.Name,
             Subject = input.Subject,
             InstructorId = input.InstructorId
         };
+
+        courseDto = await _repository.Create(courseDto);
         
-        _courses.Add(course);
+        CourseResponse course = new CourseResponse() {
+            Id = courseDto.Id,
+            Name = courseDto.Name,
+            Subject = courseDto.Subject,
+            InstructorId = courseDto.InstructorId
+        };
 
         // Type Safety for topic names
         // "CourseCreated" is out topic and the CourseResponse is our payload
@@ -34,16 +43,22 @@ public class Mutation {
     
     // Updating a Course
     public async Task<CourseResponse> UpdateCourse(Guid id, CourseInputType input, [Service] ITopicEventSender sender) {
-        CourseResponse course = _courses.FirstOrDefault(c => c.Id == id);
+        
+        CourseDto courseDto = new CourseDto() {
+            Id = id,
+            Name = input.Name,
+            Subject = input.Subject,
+            InstructorId = input.InstructorId
+        };
 
-        // Throwing a GraphQLException exception with message and a code to handle on the client side
-        if (course == null) {
-            throw new GraphQLException(new Error("Course not found", "COURSE_NOT_FOUND"));
-        }
+        courseDto = await _repository.Update(courseDto);
 
-        course.Name = input.Name;
-        course.Subject = input.Subject;
-        course.InstructorId = input.InstructorId;
+        CourseResponse course = new CourseResponse() {
+            Id = courseDto.Id,
+            Name = courseDto.Name,
+            Subject = courseDto.Subject,
+            InstructorId = courseDto.InstructorId
+        };
 
         // Send an event when a course is updated
         // We use a custom event name that is UNIQUE to publish to the topic.
@@ -55,7 +70,12 @@ public class Mutation {
     
     // Delete a Course
 
-    public bool DeleteCourse(Guid id) {
-        return _courses.RemoveAll(c => c.Id == id) >= 1;
+    public async Task<bool> DeleteCourse(Guid id) {
+        try {
+            return await _repository.Delete(id);
+        }
+        catch (Exception e) {
+            return false;
+        }
     }
 }
