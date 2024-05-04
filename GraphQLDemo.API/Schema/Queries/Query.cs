@@ -82,8 +82,6 @@ public class Query {
     // This will now apply the pagination limit (3 records) into the query instead of GETTING ALL RECORDS AND THEN FILTERING
     [UsePaging(IncludeTotalCount = true, DefaultPageSize = 3)]
     public async Task<IQueryable<CourseType>> GetPaginatedCourses([ScopedService] ApplicationDbContext context) {
-        IEnumerable<CourseDto> courseDtos =  await _repository.GetAll();
-        
         return context.Courses.Select(x => new CourseType() {
             Id = x.Id,
             Name = x.Name,
