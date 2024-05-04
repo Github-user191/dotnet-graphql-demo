@@ -15,18 +15,28 @@ public class CourseRepository {
     public async Task<IEnumerable<CourseDto>> GetAll() {
         using (ApplicationDbContext context = _context.CreateDbContext()) {
 
+            // Includes tells EF core to execute joins on the included tables
+            // What if there's a query for only a Course, the database will try to fetch the included fields regardless
+            // return await context.Courses
+            //     .Include(x => x.Instructor) 
+            //     .Include(x => x.Students) 
+            //     .ToListAsync();
+
             return await context.Courses
-                .Include(x => x.Instructor) // Include a join on the Instructor
-                .Include(x => x.Students) // Include a join on the Students
                 .ToListAsync();
         }
     }
     
     public async Task<CourseDto> GetById(Guid id) {
         using (ApplicationDbContext context = _context.CreateDbContext()) {
+            // Includes tells EF core to execute joins on the included tables
+            // What if there's a query for only a Course, the database will try to fetch the included fields regardless
+            // return await context.Courses
+            //     .Include(x => x.Instructor)
+            //     .Include(x => x.Students) 
+            //     .FirstOrDefaultAsync(x => x.Id == id);
+            
             return await context.Courses
-                .Include(x => x.Instructor) // Include a join on the Instructor
-                .Include(x => x.Students) // Include a join on the Students
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
     }

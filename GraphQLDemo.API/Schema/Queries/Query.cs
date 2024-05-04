@@ -49,7 +49,7 @@ public class Query {
     public string Instructions => "Smash Like!";
 
     
-    public async Task<IEnumerable<CourseType>> GetCoursesWithRepository() {
+    public async Task<IEnumerable<CourseType>> GetCourses() {
         //List<CourseType> courses = _courseFaker.Generate(5);
         IEnumerable<CourseDto> courseDtos =  await _repository.GetAll();
 
@@ -57,12 +57,38 @@ public class Query {
             Id = x.Id,
             Name = x.Name,
             Subject = x.Subject,
-            Instructor = new InstructorType() {
-                Id = x.InstructorId,
-                FirstName = x.Instructor.FirstName,
-                LastName = x.Instructor.LastName,
-                Salary = x.Instructor.Salary
-            }
+            InstructorId = x.InstructorId
+            // Instructor = new InstructorType() {
+            //     Id = x.InstructorId,
+            //     FirstName = x.Instructor.FirstName,
+            //     LastName = x.Instructor.LastName,
+            //     Salary = x.Instructor.Salary
+            // }
+        });
+    }
+    
+    // PAGINATION
+    // *******************
+    // OFFSET PAGINATION skips a fixed number of items for each page,
+    // which can be inefficient for large datasets due to the need to calculate and skip records. 
+    
+    // CURSOR PAGINATION, on the other hand, relies on unique identifiers (cursors) for each item,
+    // fetching data based on comparisons with these cursors, making it more efficient
+    //  Acts as a reference point for fetching the next or previous page of results.
+    // The client uses these cursors to navigate through the dataset efficiently.
+    
+    // We apply the pagination against our DB query by injecting the DBContext into the method
+    // Return IQueryable representing a db query
+    // This will now apply the pagination limit (3 records) into the query instead of GETTING ALL RECORDS AND THEN FILTERING
+    [UsePaging(IncludeTotalCount = true, DefaultPageSize = 3)]
+    public async Task<IQueryable<CourseType>> GetPaginatedCourses([ScopedService] ApplicationDbContext context) {
+        IEnumerable<CourseDto> courseDtos =  await _repository.GetAll();
+        
+        return context.Courses.Select(x => new CourseType() {
+            Id = x.Id,
+            Name = x.Name,
+            Subject = x.Subject,
+            InstructorId = x.InstructorId
         });
     }
     
@@ -75,12 +101,13 @@ public class Query {
             Id = x.Id,
             Name = x.Name,
             Subject = x.Subject,
-            Instructor = new InstructorType() {
-                Id = x.InstructorId,
-                FirstName = x.Instructor.FirstName,
-                LastName = x.Instructor.LastName,
-                Salary = x.Instructor.Salary
-            }
+            InstructorId = x.InstructorId
+            // Instructor = new InstructorType() {
+            //     Id = x.InstructorId,
+            //     FirstName = x.Instructor.FirstName,
+            //     LastName = x.Instructor.LastName,
+            //     Salary = x.Instructor.Salary
+            // }
         });
     }
 
@@ -91,12 +118,12 @@ public class Query {
             Id = courseDto.Id,
             Name = courseDto.Name,
             Subject = courseDto.Subject,
-            Instructor = new InstructorType() {
-                Id = courseDto.InstructorId,
-                FirstName = courseDto.Instructor.FirstName,
-                LastName = courseDto.Instructor.LastName,
-                Salary = courseDto.Instructor.Salary
-            }
+            // Instructor = new InstructorType() {
+            //     Id = courseDto.InstructorId,
+            //     FirstName = courseDto.Instructor.FirstName,
+            //     LastName = courseDto.Instructor.LastName,
+            //     Salary = courseDto.Instructor.Salary
+            // }
         };
     }
 }

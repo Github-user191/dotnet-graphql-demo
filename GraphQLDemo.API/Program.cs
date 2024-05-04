@@ -1,4 +1,5 @@
 using GraphQLDemo.API.Data;
+using GraphQLDemo.API.DataLoader;
 using GraphQLDemo.API.Repository;
 using GraphQLDemo.API.Schema;
 using GraphQLDemo.API.Schema.Subscriptions;
@@ -10,7 +11,8 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 // Ensures we have a "pool" of DbContexts ready.
 // Allows HotChocolate to safely execute EF operations in parallel
 builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(opts => {
-    opts.UseSqlite(connectionString);
+    opts.UseSqlite(connectionString)
+        .LogTo(Console.WriteLine);
 });
 
 
@@ -24,6 +26,9 @@ builder.Services.AddGraphQLServer()
 
 // Scoped service gives us a new instance for each request to the server
 builder.Services.AddScoped<CourseRepository>();
+builder.Services.AddScoped<InstructorRepository>();
+builder.Services.AddScoped<InstructorDataLoader>();
+
 
 var app = builder.Build();
 
