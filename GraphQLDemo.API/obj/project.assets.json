@@ -2784,11 +2784,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
+      "projectUniqueName": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
       "projectName": "GraphQLDemo.API",
-      "projectPath": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
+      "projectPath": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\GraphQLDemo.API.csproj",
       "packagesPath": "C:\\Users\\luqma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luqma\\Documents\\.NET\\GraphQLDemo\\GraphQLDemo.API\\obj\\",
+      "outputPath": "C:\\Users\\luqma\\OneDrive\\Documents\\Visual Studio\\dotnet-graphql-demo\\GraphQLDemo.API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\luqma\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2859,7 +2859,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files (x86)\\dotnet\\sdk\\6.0.421\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.421\\RuntimeIdentifierGraph.json"
       }
     }
   }

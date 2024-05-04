@@ -19,6 +19,9 @@ builder.Services.AddPooledDbContextFactory<ApplicationDbContext>(opts => {
 builder.Services.AddGraphQLServer()
     .AddMutationType<Mutation>()
     .AddSubscriptionType<Subscription>()
+    .AddFiltering()
+    .AddSorting()
+    .AddProjections()
     .AddInMemorySubscriptions()
     .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
     .AddQueryType<Query>();

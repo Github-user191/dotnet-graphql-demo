@@ -24,10 +24,8 @@ C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Transport.Sockets.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.CursorPagination.dll
-C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.Errors.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.Mutations.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.OffsetPagination.dll
-C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.Queries.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.Scalars.Upload.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Types.Shared.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Utilities.dll
@@ -52,7 +50,6 @@ C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\obj\Debug\net6.0\ref\GraphQLDemo.API.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Data.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Data.EntityFramework.dll
-C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\HotChocolate.Data.EntityFramework.Helpers.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\Microsoft.Data.Sqlite.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -179,3 +176,5 @@ C:\Users\luqma\Documents\.NET\GraphQLDemo\GraphQLDemo.API\obj\Debug\net6.0\Graph
 C:\Users\luqma\Documents\.NET\GraphQLDemo\GraphQLDemo.API\obj\Debug\net6.0\ref\GraphQLDemo.API.dll
 C:\Users\luqma\Documents\.NET\GraphQLDemo\GraphQLDemo.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\luqma\Documents\.NET\GraphQLDemo\GraphQLDemo.API\bin\Debug\net6.0\System.Text.Json.dll
+C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\luqma\OneDrive\Documents\Visual Studio\dotnet-graphql-demo\GraphQLDemo.API\bin\Debug\net6.0\System.Text.Json.dll

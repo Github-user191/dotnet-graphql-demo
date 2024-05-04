@@ -49,6 +49,9 @@ public class Query {
     public string Instructions => "Smash Like!";
 
     
+    // For applying filtering,pagination and sorting
+    // We need to be able to add the criteria to the query being executed instead
+    // of generating a query to load all records before applying the query, see alternate GetPaginatedCourses() method
     public async Task<IEnumerable<CourseType>> GetCourses() {
         //List<CourseType> courses = _courseFaker.Generate(5);
         IEnumerable<CourseDto> courseDtos =  await _repository.GetAll();
@@ -80,7 +83,17 @@ public class Query {
     // We apply the pagination against our DB query by injecting the DBContext into the method
     // Return IQueryable representing a db query
     // This will now apply the pagination limit (3 records) into the query instead of GETTING ALL RECORDS AND THEN FILTERING
+    
+    // PROJECTION 
+    // ************
+    // Refers to selecting SPECIFIC COLUMNS from a table.
+    // You project a subset of the data from one or more tables instead of the entire data
+    // Helps to increase performance by not overfetching data
+    // SELECT name, age FROM table instead of SELECT id, name, surname, age FROM table
     [UsePaging(IncludeTotalCount = true, DefaultPageSize = 3)]
+    [UseProjection]
+    [UseFiltering]
+    [UseSorting]
     public async Task<IQueryable<CourseType>> GetPaginatedCourses([ScopedService] ApplicationDbContext context) {
         return context.Courses.Select(x => new CourseType() {
             Id = x.Id,

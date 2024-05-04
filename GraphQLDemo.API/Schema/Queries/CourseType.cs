@@ -12,6 +12,9 @@ public class CourseType {
     public string Name { get; set; }
     public Subject Subject { get; set; }
     //[GraphQLIgnore] - Don't allow clients to query the field
+    // This makes sure we always attach the InstructorId when querying data from the Type
+    // For projection we need the FK id in order to fetch related data
+    [IsProjected(true)] 
     public Guid InstructorId { get; set; }
     
     // Creating a Resolver directly on the property
